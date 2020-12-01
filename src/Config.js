@@ -1,0 +1,1 @@
+export const KAKAO_MAP_API_KEY = 'f57f55b8f364f077b0b1436432c7392e';
