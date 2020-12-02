@@ -9,10 +9,14 @@ import styled from 'styled-components';
 const pridceUnder20 = 'd98723';
 const priceAbove20 = 'b85c06';
 
-const MapContainer = () => {
+const MapContainer = (props) => {
+  console.log(props);
   const [zoomLevel, setZoomLevel] = useState(5);
   const [placeData, setPlaceData] = useState([]);
   const [zoomData, setZoomData] = useState([]);
+  const [typeData, setTypeData] = useState([]);
+  // const [longTermLentData, setLongTermLentData] = useState([]);
+  // const [saleData, setSaleData] = useState([]);
 
   useEffect(() => {
     fetch('./data/beforeLevel6Positions.json')
@@ -20,6 +24,9 @@ const MapContainer = () => {
       .then((res) => {
         setPlaceData(res.placeData);
         setZoomData(res.zoomedData);
+        setTypeData(res.type);
+        // setLongTermLentData(res.long_term_lent);
+        // setSaleData(res.sale);
       });
   }, []);
 
@@ -33,11 +40,22 @@ const MapContainer = () => {
     }
   }, [placeData, zoomLevel]);
 
+  useEffect(() => {
+    getMap();
+  }, [props.userClickedFilteredData]);
+
   const getMap = () => {
     const { kakao } = window;
     const container = document.getElementById('map');
     const options = {
-      center: new kakao.maps.LatLng(37.5063702427027, 127.053641718718),
+      center: new kakao.maps.LatLng(
+        props.userClickedFilteredData
+          ? props.userClickedFilteredData.lat
+          : 37.5063702427027,
+        props.userClickedFilteredData
+          ? props.userClickedFilteredData.lng
+          : 127.053641718718
+      ),
       level: zoomLevel,
     };
 
@@ -98,6 +116,7 @@ const MapContainer = () => {
       customOverlayTitle.setMap(map);
       customOverlayPrice.setMap(map);
     }
+
     map.relayout();
   };
 
