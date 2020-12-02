@@ -25,11 +25,13 @@ yarn-error.log*
 # eslint
 .eslintcache
 
-<<<<<<< HEAD
 # importan 
 .env
 .Config.js
-=======
+
 # important
 .env
->>>>>>> 6f517b4... Refactoring
+
+# APIKEY
+.env
+

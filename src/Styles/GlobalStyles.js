@@ -4,6 +4,9 @@ import reset from "styled-reset";
 const GlobalStyles = createGlobalStyle`
     ${reset}
 
+    @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+    @import url("https://spoqa.github.io/spoqa-han-sans/ko-KR/");
+    
     html {
       height: 100%;
     }
