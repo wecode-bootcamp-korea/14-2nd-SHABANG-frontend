@@ -58,7 +58,7 @@ export default function LogIn() {
           <Link to="/">
             <img
               src="images/loginLogo.png"
-              alt="클릭하면 홈화면으로 이동해요"
+              alt="클릭하면 홈화면으로 이동할 수 있어요"
             />
           </Link>
           <h className="title sub">간편하게 로그인하고</h>
