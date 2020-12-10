@@ -5,3 +5,11 @@ export const GOOGLE_LOGIN_API_URL = `${MAIN_API_URL}/user/googlelogin`;
 
 export const nearbyDataAPI = "http://localhost:3000/data/nearby.json";
 // export const nearbyDataAPI = "http://10.58.2.19:8000/?/5";
+
+const oneRoomDataAPI = "http://172.30.1.56:8000/room/map";
+
+export { oneRoomDataAPI };
+
+// http://172.30.1.56:8000/room/map
+
+// /data/OneRoom.json
