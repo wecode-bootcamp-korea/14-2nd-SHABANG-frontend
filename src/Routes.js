@@ -4,6 +4,7 @@ import Apartment from "./Pages/Apartment/Apartment";
 import LogIn from "./Pages/LogIn/LogIn";
 import OneRoom from "./Pages/OneRoom/OneRoom";
 import NearbyCard from "./Components/NearBy/Card/NearbyCard";
+import NavBar from "./Components/NavBar/NavBar";
 
 class Routes extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class Routes extends React.Component {
           <Route exact path="/oneroom" component={OneRoom} />
           <Route exact path="/nearbycard" component={NearbyCard} />
           <Route exact path="/oneroom/:id" component={OneRoom} />
+          <Route exact path="/navbar" component={NavBar} />
         </Switch>
       </Router>
     );
