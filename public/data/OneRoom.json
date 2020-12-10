@@ -1,0 +1,103 @@
+{
+  "total_count": 145,
+  "oneroom": [
+    {
+      "id" : 1,
+      "region": "강남구 역삼동",
+      "lat": 37.508749,
+      "lng": 127.051562,
+      "img":
+        "https://images.unsplash.com/photo-1492097631548-189753426f9c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2259&q=80",
+      "type": "원룸 오픈형 원룸",
+      "price": [
+        {
+          "trade_type": "월세",
+          "deposit": "1000.0000",
+          "rent": "80.000"
+        }
+      ],
+      "space": "29.59000",
+      "floor": "3",
+      "description": "🎯월세조절👌가능🎯이동네 최강 원룸, 이가격에는 살 수 없어"
+    },
+    {
+      "id" : 2,
+      "region": "강남구 역삼동",
+      "lat": 37.508549,
+      "lng": 127.059717,
+      "img":
+        "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2098&q=80",
+      "type": "원룸 오픈형 원룸",
+      "price": [
+        {
+          "trade_type": "월세",
+          "deposit": "1000.0000",
+          "rent": "80.000"
+        }
+      ],
+      "space": "29.59000",
+      "floor": "3",
+      "description": "🎯월세조절👌가능🎯이동네 최강 원룸, 이가격에는 살 수 없어"
+    },
+    {
+      "id": 3,
+      "region": "강남구 역삼동",
+      "lat": 37.508549,
+      "lng": 127.059717,
+      "img":
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
+      "type": "원룸 오픈형 원룸",
+      "price": [
+        {
+          "trade_type": "월세",
+          "deposit": "1000.0000",
+          "rent": "80.000"
+        }
+      ],
+      "space": "29.59000",
+      "floor": "3",
+      "description": "🎯월세조절👌가능🎯이동네 최강 원룸, 이가격에는 살 수 없어"
+    },
+    {
+      "id" : 4,
+      "region": "강남구 역삼동",
+      "lat": 37.508549,
+      "lng": 127.059717,
+      "img":
+        "https://images.unsplash.com/photo-1537726235470-8504e3beef77?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
+      "type": "원룸 오픈형 원룸",
+      "price": [
+        {
+          "trade_type": "월세",
+          "deposit": "1000.0000",
+          "rent": "80.000"
+        }
+      ],
+      "space": "29.59000",
+      "floor": "3",
+      "description": "🎯월세조절👌가능🎯이동네 최강 원룸, 이가격에는 살 수 없어"
+    }, 
+    {
+      "id" : 5,
+      "region": "강남구 역삼동",
+      "lat": 37.508549,
+      "lng": 127.059717,
+      "img":
+        "https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
+      "type": "원룸 오픈형 원룸",
+      "price": [
+        {
+          "trade_type": "월세",
+          "deposit": "1000.0000",
+          "rent": "80.000"
+        }
+      ],
+      "space": "29.59000",
+      "floor": "3",
+      "description": "🎯월세조절👌가능🎯이동네 최강 원룸, 이가격에는 살 수 없어"
+    }
+    
+  ]
+}
+
+

@@ -23,7 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # eslint
-.eslintcache
 
 # importan 
 .env
@@ -35,3 +34,6 @@ yarn-error.log*
 # APIKEY
 .env
 
+# important
+.env
+.eslintcache
