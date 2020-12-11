@@ -3,6 +3,7 @@ import styled, { ThemeProvider, css } from 'styled-components';
 import FilterElement from './FilterElement';
 // import { ButtonNameArray } from './ButtonNameArray.js';
 import Select from 'react-select';
+import { APARTMENT_SEARCH_API_KEY } from '../../../Config';
 
 export default function Filter(props) {
   const [inputResult, setInput] = useState('');
@@ -57,16 +58,7 @@ export default function Filter(props) {
   ]);
 
   const TYPEARRAY = ['매매', '전세'];
-  const AREAARRAY = [
-    '전체',
-    '10평 이하',
-    '10평대',
-    '20평대',
-    '30평대',
-    '40평대',
-    '50평대',
-    '60평대',
-  ];
+
   const FOUNDATIONARRAY = [
     '전체',
     '5년 이내',
@@ -90,16 +82,19 @@ export default function Filter(props) {
     { value: '전세', label: '전세' },
   ];
 
-  useEffect(() => {
-    fetch('./data/beforeLevel6Positions.json')
-      .then((res) => res.json())
-      .then((res) => {
-        setRegionData(res.region);
-      });
-  }, []);
-
   const inputHandler = (e) => {
     setInput(e.target.value);
+  };
+  console.log(inputResult);
+
+  const goToServer = (e) => {
+    console.log(e.key);
+    fetch(`${APARTMENT_SEARCH_API_KEY}/apartment/search?search=${inputResult}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.lists);
+        setRegionData(res.lists);
+      });
   };
 
   const addResult = (e) => {
@@ -131,28 +126,6 @@ export default function Filter(props) {
   const onButtonClickedHandler = (e) => {
     const { name, value } = e.target;
     setUserSelect(name, value);
-
-    // if (e.target.localName === 'input') {
-    //   if (e.target.name === 'type') {
-    // setEstateType(e.target.value);
-    // setIsClickedType(e.target.dataset.id);
-    //   }
-
-    //   if (e.target.name === 'area') {
-    //     setAreaType(e.target.value);
-    //     setIsClickedArea(e.target.dataset.id);
-    //   }
-
-    //   if (e.target.name === 'foundation') {
-    //     setFoundationType(e.target.value);
-    //     setIsClickedFoundation(e.target.dataset.id);
-    //   }
-
-    //   if (e.target.name === 'houseHolds') {
-    //     setHouseHoldsType(e.target.value);
-    //     setIsClickedHouseHolds(e.target.dataset.id);
-    //   }
-    // }
   };
 
   const typeInputHandler = (e) => {
@@ -185,20 +158,20 @@ export default function Filter(props) {
     }
   };
 
-  const filter = (data) => {
-    let filtredList = data.filter((place) => {
-      return place.title.indexOf(inputResult) > -1;
-    });
-    return filtredList.map((filtered, idx) => {
-      return (
-        <FilterElement
-          key={idx}
-          place={filtered}
-          onClickFilteredData={props.onClickFilteredData}
-        />
-      );
-    });
-  };
+  // const filter = (data) => {
+  //   let filtredList = data.filter((place) => {
+  //     return place.title.indexOf(inputResult) > -1;
+  //   });
+  //   return filtredList.map((filtered, idx) => {
+  //     return (
+  //       <FilterElement
+  //         key={idx}
+  //         place={filtered}
+  //         onClickFilteredData={props.onClickFilteredData}
+  //       />
+  //     );
+  //   });
+  // };
 
   // const setColors = (index) => {
   //   console.log(index);
@@ -214,6 +187,7 @@ export default function Filter(props) {
   //   });
   // };
   // console.log(areaButtons);
+
   if (clickCountLimit === 2) {
     setClickCountLimt(0);
   }
@@ -226,14 +200,25 @@ export default function Filter(props) {
               type='text'
               className='filter-input'
               onChange={inputHandler}
-              onKeyPress={() => setIsFilter(true)}
+              onKeyPress={(e) => {
+                setIsFilter(true);
+              }}
             />
             <div className='filter-btn-wrap'>
-              <i className='fas fa-search' />
+              <i className='fas fa-search' onClick={goToServer} />
             </div>
           </FilterInput>
           <FilterResultList isFilter={isFilter} inputResult={inputResult}>
-            <ListWrap>{filter(regionData)}</ListWrap>
+            <ListWrap>
+              {regionData.map((el, idx) => {
+                return (
+                  <FilterElement
+                    place={el}
+                    onClickFilteredData={props.onClickFilteredData}
+                  />
+                );
+              })}
+            </ListWrap>
           </FilterResultList>
           <FilterSelect>
             <Select
@@ -325,17 +310,6 @@ export default function Filter(props) {
                           name='area'
                           onClick={(e) => {
                             setClickCountLimt(clickCountLimit + 1);
-                            // if (clickCountLimit === 0) {
-                            //   setStartIndex(idx);
-                            // }
-                            // if (clickCountLimit === 1) {
-                            //   setEndIndex(idx);
-                            // }
-                            // if (clickCountLimit === 2) {
-                            //   setStartIndex([0]);
-                            //   setEndIndex([0]);
-                            // }
-                            // setColors(idx);
                             addResult(e);
                             setIsClickedArea(idx);
                             props.toServerUserClick(
@@ -428,7 +402,7 @@ const FilterWrap = styled.section`
   height: 510px;
   margin: 150px 0px 0px 20px;
   overflow: scroll;
-  z-index: 10000;
+  z-index: 2;
 `;
 
 const FilterInput = styled.form`
@@ -441,6 +415,7 @@ const FilterInput = styled.form`
     border-radius: 5px;
     outline: none;
     border: 1px solid #d98730;
+    cursor: pointer;
   }
   .filter-btn-wrap {
     position: absolute;
@@ -451,6 +426,7 @@ const FilterInput = styled.form`
     border-radius: 5px;
     i {
       color: white;
+      cursor: pointer;
     }
   }
 `;
@@ -484,12 +460,14 @@ const FilterSelect = styled.div`
     width: 190px;
     padding: 10px 10px;
     border: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
   }
   .filter-modal-btn {
     width: 50px;
     position: relative;
     border: 1px solid rgba(0, 0, 0, 0.9);
     padding: 10px;
+    cursor: pointer;
     i {
       position: absolute;
       font-size: 12px;
@@ -520,7 +498,6 @@ const FilterResultList = styled.div`
     `}
   width: 100%;
   height: 100%;
-
   overflow: scroll;
   z-index: 10001;
   background-color: white;
@@ -533,7 +510,9 @@ const ListWrap = styled.div`
   top: 40px;
   left: 10px;
   background-color: white;
+  height: 300px;
   z-index: 10001;
+  overflow: scroll;
   border: 1px solid rgba(0, 0, 0, 0.4);
   .card {
     z-index: 10000;
@@ -656,6 +635,7 @@ const CardAreaInput = styled.div`
     width: 80px;
     height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.4);
+    outline: none;
     padding: 8px;
   }
   .activeAreaBtn {
@@ -663,6 +643,7 @@ const CardAreaInput = styled.div`
     outline: none;
     font-weight: bold;
     color: white;
+    text-decoration: none;
   }
 `;
 

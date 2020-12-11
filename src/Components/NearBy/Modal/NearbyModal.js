@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import NearbyModalFooter from "./Component/NearbyModalFooter";
-import styled, { css } from "styled-components";
-import { nearbyDataAPI } from "../../../Config";
+import React, { useState, useEffect } from 'react';
+import NearbyModalFooter from './Component/NearbyModalFooter';
+import styled, { css } from 'styled-components';
+import { nearbyDataAPI } from '../../../Config';
 
 const { kakao } = window;
 
@@ -48,13 +48,13 @@ const NearbyModal = ({ isModalActive, setModalActive, targetRoomData }) => {
 
         kakao.maps.event.addListener(
           marker,
-          "mouseover",
+          'mouseover',
           makeOverListener(map, marker, infowindow)
         );
 
         kakao.maps.event.addListener(
           marker,
-          "mouseout",
+          'mouseout',
           makeOutListener(infowindow)
         );
 
@@ -66,10 +66,10 @@ const NearbyModal = ({ isModalActive, setModalActive, targetRoomData }) => {
     const stores = nearbyList.convenient_store;
     const cafes = nearbyList.cafe;
 
-    setSubwaysMarkers(createMarkers(subways, "subway"));
-    setSchoolsMarkers(createMarkers(schools, "school"));
-    setStoresMarkers(createMarkers(stores, "store"));
-    setCafesMarkers(createMarkers(cafes, "cafe"));
+    setSubwaysMarkers(createMarkers(subways, 'subway'));
+    setSchoolsMarkers(createMarkers(schools, 'school'));
+    setStoresMarkers(createMarkers(stores, 'store'));
+    setCafesMarkers(createMarkers(cafes, 'cafe'));
   };
 
   const setMarkers = (markers, isRendering) => {
@@ -84,7 +84,7 @@ const NearbyModal = ({ isModalActive, setModalActive, targetRoomData }) => {
     fetch(nearbyDataAPI)
       .then((res) => res.json())
       .then((res) => {
-        const container = document.getElementById("nearbyMap"); // nearbyMap => 렌더링 되지 않으면.. 안 가져옴..
+        const container = document.getElementById('nearbyMap'); // nearbyMap => 렌더링 되지 않으면.. 안 가져옴..
         const options = {
           center: new kakao.maps.LatLng(
             targetRoomData[0].lat,
@@ -124,26 +124,26 @@ const NearbyModal = ({ isModalActive, setModalActive, targetRoomData }) => {
     <ModalBackground onClick={() => setModalActive(!isModalActive)}>
       <NearbyModalContainer onClick={(e) => e.stopPropagation()}>
         <Header>
-          <h3 className="title">위치 및 주변 시설</h3>
+          <h3 className='title'>위치 및 주변 시설</h3>
           <img
-            src="/images/icon/closeBtn.png"
-            alt="누르면 위치 및 주변시설을 끌 수 있어요"
+            src='/images/icon/closeBtn.png'
+            alt='누르면 위치 및 주변시설을 끌 수 있어요'
             onClick={() => setModalActive(!isModalActive)}
           />
-          <div className="infoBox">
-            <span className="detailAddress">서울특별시 강남구 삼성동</span>
-            <button className="addressInfo">
-              <a href="http://naver.com">위치정보</a>
+          <div className='infoBox'>
+            <span className='detailAddress'>서울특별시 강남구 삼성동</span>
+            <button className='addressInfo'>
+              <a href='http://naver.com'>위치정보</a>
             </button>
           </div>
         </Header>
         <MapContainer>
-          <div className="container">
-            <div id="rvWrapper">
-              <div id="roadView" />
+          <div className='container'>
+            <div id='rvWrapper'>
+              <div id='roadView' />
             </div>
-            <div id="mapWrapper">
-              <Map id="nearbyMap" />
+            <div id='mapWrapper'>
+              <Map id='nearbyMap' />
             </div>
           </div>
         </MapContainer>
@@ -189,7 +189,7 @@ const NearbyModalContainer = styled.div`
   margin: auto auto;
   width: 905px;
   height: 610px;
-  font-family: "Spoqa Han Sans", Sans-serif;
+  font-family: 'Spoqa Han Sans', Sans-serif;
   border: 1px solid #eeeeee;
   background-color: #ffffff;
   opacity: 1;

@@ -5,7 +5,6 @@ const FOUNDATIONARRAY = [
   '15년 이내',
   '20년 이내',
 ];
-
 const HOUSEHOLDSARRAY = [
   '전체',
   '200세대 이상',
@@ -42,9 +41,9 @@ const AREAFILTER = [
   },
 ];
 
-export const Data = {
-  FOUNDATIONARRAY,
-  HOUSEHOLDSARRAY,
+export const ButtonNameArray = {
   TYPEARRAY,
+  HOUSEHOLDSARRAY,
+  FOUNDATIONARRAY,
   AREAFILTER,
 };

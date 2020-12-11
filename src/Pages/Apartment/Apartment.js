@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import ProductDetail from './../Apartment/components/ProductDetail';
 import Filter from '../Apartment/components/Filter';
 import MapContainer from '../Apartment/components/Map/MapContainer';
 import styled from 'styled-components';
+import Animation from './components/Animation';
+import { APARTMENT_API_KEY, APARTMENT_SEARCH_API_KEY } from '../../Config';
 
-export default function Apartment() {
+const Apartment = () => {
+  const [isDetail, setIsDetail] = useState(false);
   const [userClickedFilteredData, setUsetClickedFilteredData] = useState('');
   const [userSelectType, userSelectSetType] = useState('');
   const [userSelectArea, userSelectSetArea] = useState('');
@@ -11,6 +15,9 @@ export default function Apartment() {
   const [userSelecthouseHolds, userSelectSetUserSelectHouseHolds] = useState(
     ''
   );
+  const [detailData, setDetailData] = useState([]);
+  const [graphData, setGraphData] = useState([]);
+  const [isAnimation, setIsAnimation] = useState(false);
 
   const AREAFILTER = [
     {
@@ -44,15 +51,34 @@ export default function Apartment() {
     lng: '126.570667',
   };
 
+  const getClickedinformationMarker = (id) => {
+    fetch(`${APARTMENT_API_KEY}/apartment/complex/${id}`)
+      .then((res) => res.json())
+      .then((res) => setDetailData(res.complex));
+
+    fetch(`${APARTMENT_SEARCH_API_KEY}/apartment/graph/160?size_id=40`)
+      .then((res) => res.json())
+      .then((res) => setGraphData(res));
+    setIsDetail(!isDetail);
+  };
+  console.log(graphData);
+
   const toServerUserClick = (name, idx, cnt) => {
-    console.log(cnt);
     const selectedButton = AREAFILTER.find((el) => el === AREAFILTER[idx]);
-    console.log(selectedButton[name][cnt]);
   };
 
   const onClickFilteredData = (place) => {
+    console.log(place);
+    fetch(
+      `${APARTMENT_API_KEY}/apartment/map?zoom_level=${4}&latitude=${
+        place.latitude
+      }&longitude=${place.longitude}&size1=${1}&size2=${21}`
+    )
+      .then((res) => res.json())
+      .then((res) => console.log(res.result));
     setUsetClickedFilteredData(place);
   };
+  console.log(userClickedFilteredData);
 
   const onChangeUserSelectKeyword = (e) => {
     if (e.target.localName === 'input') {
@@ -73,9 +99,16 @@ export default function Apartment() {
       }
     }
   };
-
+  const setIsDetailClose = () => {
+    setIsDetail(false);
+  };
+  const setIsAnimationOpen = () => {
+    setIsAnimation(true);
+  };
+  console.log(isAnimation);
   return (
     <ApartmentContainer>
+      {/* <Animation isAnimation={isAnimation} /> */}
       <Filter
         onClickFilteredData={onClickFilteredData}
         onChangeUserSelectKeyword={onChangeUserSelectKeyword}
@@ -89,13 +122,23 @@ export default function Apartment() {
         lat={LatLngData.lat}
         lng={LatLngData.lng}
         userClickedFilteredData={userClickedFilteredData}
+        getClickedinformationMarker={getClickedinformationMarker}
+      />
+      <ProductDetail
+        isDetail={isDetail}
+        setIsDetailClose={setIsDetailClose}
+        detailData={detailData}
+        graphData={graphData}
+        setIsAnimationOpen={setIsAnimationOpen}
       />
     </ApartmentContainer>
   );
-}
+};
 
 const ApartmentContainer = styled.main`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 `;
+
+export default Apartment;

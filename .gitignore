@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # eslint
+.eslintcache
 
 # importan 
 .env
@@ -34,9 +35,21 @@ yarn-error.log*
 # APIKEY
 .env
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 # important
 .env
 .eslintcache
 
 # important
 .env
+=======
+=======
+
+# importan 
+.env
+.Config.js
+# important
+.env
+=======
+>>>>>>> 36bddd1... finish 서버 데이터로 렌더 및 그래프 구현
