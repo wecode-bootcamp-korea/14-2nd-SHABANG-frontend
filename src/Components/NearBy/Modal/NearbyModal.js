@@ -14,7 +14,7 @@ const NearbyModal = ({ isModalActive, setModalActive }) => {
   const [isSchoolBtnOn, setSchoolBtnOn] = useState(true);
   const [nearbyList, setNearbyList] = useState([]);
   const [schoolsMarkers, setSchoolsMarkers] = useState([]); // marker 들이 담겨있는 배열
-  const [subwaysMarekrs, setSubwaysMarkers] = useState([]);
+  const [subwaysMarkers, setSubwaysMarkers] = useState([]);
   const [cafesMarkers, setCafesMarkers] = useState([]);
   const [storesMarkers, setStoresMarkers] = useState([]);
 
@@ -74,7 +74,7 @@ const NearbyModal = ({ isModalActive, setModalActive }) => {
 
   const setMarkers = (markers, isRendering) => {
     markers.forEach((marker) => {
-      marker.setMap(isRendering? map : null);
+      marker.setMap(isRendering ? map : null);
     });
   };
 
@@ -104,7 +104,7 @@ const NearbyModal = ({ isModalActive, setModalActive }) => {
     schoolsMarkers.length && setMarkers(schoolsMarkers, isSchoolBtnOn);
     storesMarkers.length && setMarkers(storesMarkers, isStoreBtnOn);
     cafesMarkers.length && setMarkers(cafesMarkers, isCafeBtnOn);
-    subwaysMarekrs.length && setMarkers(subwaysMarekrs, isSubwayBtnOn);
+    subwaysMarkers.length && setMarkers(subwaysMarkers, isSubwayBtnOn);
   }, [
     isSubwayBtnOn,
     isStoreBtnOn,
@@ -113,7 +113,7 @@ const NearbyModal = ({ isModalActive, setModalActive }) => {
     schoolsMarkers,
     storesMarkers,
     cafesMarkers,
-    subwaysMarekrs,
+    subwaysMarkers,
   ]);
 
   return (
@@ -244,61 +244,6 @@ const MapContainer = styled.div`
     overflow: hidden;
     position: relative;
     height: 610px;
-  }
-  /* #mapWrapper {
-    width: 100%;
-  } */
-  #rvWrapper {
-    width: 50%;
-    /* height: 300px; */
-    top: 0;
-    right: 0;
-    position: absolute;
-    /* z-index: 0; */
-  }
-  #container.view_roadview #mapWrapper {
-    width: 50%;
-  }
-  /* #roadviewControl {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 42px;
-    height: 42px;
-    z-index: 1;
-    cursor: pointer;
-    background: url(https://t1.daumcdn.net/localimg/localimages/07/2018/pc/common/img_search.png)
-      0 -450px no-repeat;
-  } */
-  /* #roadviewControl.active {
-    background-position: 0 -350px;
-  } */
-
-  #roadView {
-    width: 100%;
-    height: 100%;
-  }
-
-  #roadViewCloseBtn {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 14px;
-    height: 14px;
-    background: #fff;
-    border-radius: 4px;
-    border: 1px solid #c8c8c8;
-    box-shadow: 0px 1px #888;
-    cursor: pointer;
-  }
-
-  #roadViewControlBtn {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
   }
 `;
 
