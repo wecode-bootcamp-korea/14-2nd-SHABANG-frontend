@@ -7,7 +7,7 @@ const { kakao } = window;
 
 let map; // 고정되어있는 맵
 
-const NearbyModal = ({ isModalActive, setModalActive }) => {
+const NearbyModal = ({ isModalActive, setModalActive, targetRoomData }) => {
   const [isSubwayBtnOn, setSubwayBtnOn] = useState(true);
   const [isStoreBtnOn, setStoreBtnOn] = useState(true);
   const [isCafeBtnOn, setCafeBtnOn] = useState(true);
@@ -34,7 +34,7 @@ const NearbyModal = ({ isModalActive, setModalActive }) => {
 
     const createMarkers = (items, type) =>
       items.map(({ latitude, longitude, name, distance }) => {
-        const imageSrc = `images/icon/${type}On.png`;
+        const imageSrc = `/images/icon/${type}On.png`;
         const imageSize = new kakao.maps.Size(35, 35);
         const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
         const marker = new kakao.maps.Marker({
@@ -80,12 +80,16 @@ const NearbyModal = ({ isModalActive, setModalActive }) => {
 
   // componentDidMount
   useEffect(() => {
+    // fetch(`nearbyDataAPI/${targetRoomData[0].id}`)
     fetch(nearbyDataAPI)
       .then((res) => res.json())
       .then((res) => {
         const container = document.getElementById("nearbyMap"); // nearbyMap => 렌더링 되지 않으면.. 안 가져옴..
         const options = {
-          center: new kakao.maps.LatLng(37.498618097838815, 127.0287278865303),
+          center: new kakao.maps.LatLng(
+            targetRoomData[0].lat,
+            targetRoomData[0].lng
+          ),
           level: 3,
         };
 
@@ -122,7 +126,7 @@ const NearbyModal = ({ isModalActive, setModalActive }) => {
         <Header>
           <h3 className="title">위치 및 주변 시설</h3>
           <img
-            src="images/icon/closeBtn.png"
+            src="/images/icon/closeBtn.png"
             alt="누르면 위치 및 주변시설을 끌 수 있어요"
             onClick={() => setModalActive(!isModalActive)}
           />

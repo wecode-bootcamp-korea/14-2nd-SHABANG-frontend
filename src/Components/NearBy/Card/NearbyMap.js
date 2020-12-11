@@ -1,13 +1,24 @@
 import React, { useEffect } from "react";
+import {
+  Link,
+  matchPath,
+  useHistory,
+  useRouteMatch,
+  useParams,
+  withRouter,
+} from "react-router-dom";
 import styled from "styled-components";
 
 const { kakao } = window;
 
-const NearbyMap = () => {
+const NearbyMap = ({ targetRoomData }) => {
   const getMap = () => {
     const staticMapContainer = document.getElementById("myMap");
     const staticMapOption = {
-      center: new kakao.maps.LatLng(37.506506386657676, 127.0536728317191),
+      center: new kakao.maps.LatLng(
+        targetRoomData[0].lat,
+        targetRoomData[0].lng
+      ),
       level: 3,
     };
     const staticMap = new kakao.maps.StaticMap(
