@@ -21,7 +21,7 @@ const Dropdown = (props) => {
   return (
     <>
       <DropdownMenu type={type}>
-        <ul onClick={() => setClick(!click)}>
+        <ul>
           {isMenu.map(({ path, title }, index) => {
             return (
               <li key={index}>

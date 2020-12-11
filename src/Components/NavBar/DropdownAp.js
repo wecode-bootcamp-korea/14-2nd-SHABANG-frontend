@@ -8,7 +8,7 @@ const DropdownAp = () => {
   return (
     <>
       <DropdownMenu>
-        <ul onClick={() => setClick(!click)}>
+        <ul>
           {MENU_ITEMS.map(({ path, title }, index) => {
             return (
               <li key={index}>
@@ -30,9 +30,10 @@ const DropdownMenu = styled.div`
   top: 80px;
   left: 0px;
   display: block;
-  z-index: 101;
+  z-index: 15000;
   border: 1px solid #e1e1e1;
   border-top: 0px solid #e1e1e1;
+  background-color: white;
   li {
     height: 33px;
     width: 100%;

@@ -33,6 +33,7 @@ const UnderBar = styled.div`
   border: 1px solid #e1e1e1;
   border-top: 0px solid #e1e1e1;
   position: fixed;
+  background-color: white;
 `;
 
 const LeftBar = styled.div`
