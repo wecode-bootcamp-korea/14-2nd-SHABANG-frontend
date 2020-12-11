@@ -15,7 +15,7 @@ const NearbyCard = () => {
           <Arrow
             isBodyShow={isBodyShow}
             alt="클릭하면 내용을 볼 수 있어요"
-            src="images/icon/arrow2.png"
+            src="/images/icon/arrow2.png"
           />
         </span>
       </CardHeader>
