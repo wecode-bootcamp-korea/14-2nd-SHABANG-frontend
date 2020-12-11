@@ -24,9 +24,7 @@ const NavBar = () => {
     setDropdowns(dropdowns.map(() => false));
   };
 
-  useEffect(() => {
-    console.log(dropdowns);
-  });
+  useEffect(() => {});
 
   return (
     <>

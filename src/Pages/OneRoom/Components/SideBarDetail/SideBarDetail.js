@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import { oneRoomDataAPI } from "../../../../Config";
 
-const SideBarDetail = ({ data }) => {
+const SideBarDetail = () => {
   const [oneRoomData, setOneRoomData] = useState([]);
   const [targetRoomData, setTargetRoomData] = useState([]);
   const [unit, setUnit] = useState(false);
@@ -35,9 +35,10 @@ const SideBarDetail = ({ data }) => {
   };
 
   useEffect(() => {
-    fetch(oneRoomDataAPI)
+    fetch("/data/OneRoom.json")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setOneRoomData(data.oneroom);
       });
   }, []);
@@ -139,6 +140,7 @@ const Bar = styled.div`
   height: 100vh;
   width: 500px;
   border: 0px solid red;
+  margin-top: 130px;
 `;
 
 const OrList = styled.div`
@@ -150,6 +152,7 @@ const Header = styled.div`
   height: 50px;
   width: 388px;
   border: 1px solid #e1e1e1;
+  border-top: 0px solid #e1e1e1;
   display: flex;
   padding: 13px;
   justify-content: space-between;
@@ -274,7 +277,7 @@ const ProductInfo = styled.div`
   }
 `;
 
-export default withRouter(SideBarDetail);
+export default SideBarDetail;
 
 const info = [
   { id: 1, title: "주차", des: "불가능" },

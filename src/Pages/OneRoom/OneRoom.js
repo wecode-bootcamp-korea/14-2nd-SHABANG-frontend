@@ -4,10 +4,14 @@ import SideBar from "./Components/SideBar/SideBar";
 import SideBarDetail from "./Components/SideBarDetail/SideBarDetail";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavBar from "../../Components/NavBar/NavBar";
+import NavUnderOne from "../../Components/NavUnderBar/NavUnderOne";
 
 const OneRoom = () => {
   return (
     <div>
+      <NavBar />
+      <NavUnderOne />
       <Main>
         <Map />
         <Switch>
@@ -24,3 +28,5 @@ const Main = styled.div`
   width: 100%;
   height: 100vh;
 `;
+
+export default OneRoom;
