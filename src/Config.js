@@ -5,6 +5,6 @@ export const GOOGLE_LOGIN_API_URL = `${MAIN_API_URL}/user/googlelogin`;
 
 export const nearbyDataAPI = "http://172.30.1.51:8008/facility/24999922";
 
-const oneRoomDataAPI = "data/OneRoom.json";
+const oneRoomDataAPI = "http://18.188.0.125:8000/room/map";
 
 export { oneRoomDataAPI };

@@ -24,7 +24,9 @@ const NavBar = () => {
     setDropdowns(dropdowns.map(() => false));
   };
 
-  useEffect(() => {});
+  useEffect(() => {
+    console.log(localStorage);
+  });
 
   return (
     <>
@@ -87,9 +89,13 @@ const NavBar = () => {
         </LeftBar>
         <RightBar>
           <LoginBox>
-            <Link to="/login">
-              <button>로그인 및 회원가입</button>
-            </Link>
+            {localStorage.length < 3 ? (
+              <Link to="/login">
+                <button>로그인 및 회원가입</button>
+              </Link>
+            ) : (
+              <span>회원님</span>
+            )}
           </LoginBox>
           <AskBox>
             <span
@@ -107,8 +113,6 @@ const NavBar = () => {
           </AskBox>
         </RightBar>
       </Bar>
-      {/* <NavUnderOne /> */}
-      <NavUnderApt />
     </>
   );
 };
@@ -120,7 +124,8 @@ const Bar = styled.div`
   position: fixed;
   display: flex;
   justify-content: space-between;
-  z-index: 10000;
+  z-index: 14999;
+  background-color: white;
 `;
 
 const LeftBar = styled.div`

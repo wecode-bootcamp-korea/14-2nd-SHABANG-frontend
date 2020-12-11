@@ -36,7 +36,7 @@ const SideBarDetail = () => {
   };
 
   useEffect(() => {
-    fetch("/data/OneRoom.json")
+    fetch("http://18.188.0.125:8000/room/map")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
