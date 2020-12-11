@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   Link,
   matchPath,
@@ -6,19 +6,16 @@ import {
   useRouteMatch,
   useParams,
   withRouter,
-} from "react-router-dom";
-import styled from "styled-components";
+} from 'react-router-dom';
+import styled from 'styled-components';
 
 const { kakao } = window;
 
-const NearbyMap = ({ targetRoomData }) => {
+const NearbyMap = () => {
   const getMap = () => {
-    const staticMapContainer = document.getElementById("myMap");
+    const staticMapContainer = document.getElementById('myMap');
     const staticMapOption = {
-      center: new kakao.maps.LatLng(
-        targetRoomData[0].lat,
-        targetRoomData[0].lng
-      ),
+      center: new kakao.maps.LatLng(37.506506386657676, 127.0536728317191),
       level: 3,
     };
     const staticMap = new kakao.maps.StaticMap(
@@ -33,7 +30,7 @@ const NearbyMap = ({ targetRoomData }) => {
 
   return (
     <MapImg>
-      <div id="myMap">
+      <div id='myMap'>
         <PreventKaKaoMapClick />
         <MapShowDetail>
           <span>자세히 보기</span>

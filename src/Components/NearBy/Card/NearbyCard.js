@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import NearbyMap from "./NearbyMap";
-import NearbyModal from "../Modal/NearbyModal";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import NearbyMap from './NearbyMap';
+import NearbyModal from '../Modal/NearbyModal';
 
 const NearbyCard = (props) => {
   const { targetRoomData } = props;
@@ -12,19 +12,19 @@ const NearbyCard = (props) => {
   return (
     <NearbyCardContainer>
       <CardHeader onClick={() => setBodyShow(!isBodyShow)}>
-        <span className="title">주변지역 / 로드뷰</span>
+        <span className='title'>주변지역 / 로드뷰</span>
         <span>
           <Arrow
             isBodyShow={isBodyShow}
-            alt="클릭하면 내용을 볼 수 있어요"
-            src="/images/icon/arrow2.png"
+            alt='클릭하면 내용을 볼 수 있어요'
+            src='images/icon/arrow2.png'
           />
         </span>
       </CardHeader>
       {isBodyShow && (
         <CardBody>
           <DetailAddressBox>
-            <p className="detailAddress">{targetRoomData[0].region}</p>
+            <p className='detailAddress'>강남구 삼성동</p>
           </DetailAddressBox>
           <MapImgBox onClick={() => setModalActive(!isModalActive)}>
             <NearbyMap targetRoomData={targetRoomData} />
@@ -73,7 +73,7 @@ const Arrow = styled.img`
   margin-right: 20px;
   transition: all ease 0.4s;
   transform: ${({ isBodyShow }) =>
-    isBodyShow ? "rotate(-270deg)" : "rotate(-90deg)"};
+    isBodyShow ? 'rotate(-270deg)' : 'rotate(-90deg)'};
 `;
 
 const CardBody = styled.div`

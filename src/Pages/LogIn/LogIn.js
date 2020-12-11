@@ -1,9 +1,9 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { KAKAO_LOGIN_API_URL, GOOGLE_LOGIN_API_URL } from "../../Config";
-import GoogleLogin from "react-google-login";
-import LoginFooterBtn from "./Component/LoginFooterBtn";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { KAKAO_LOGIN_API_URL, GOOGLE_LOGIN_API_URL } from '../../Config';
+import GoogleLogin from 'react-google-login';
+import LoginFooterBtn from './Component/LoginFooterBtn';
 
 const googleLoginClientId = process.env.REACT_APP_GOOGLELOGIN_CLIENT_ID;
 const { Kakao } = window;
@@ -14,17 +14,17 @@ export default function LogIn() {
     Kakao.Auth.login({
       success: function (authObj) {
         fetch(`${KAKAO_LOGIN_API_URL}`, {
-          method: "POST",
-          headers: {
-            Authorization: authObj.access_token,
-          },
+          method: 'POST',
+          body: JSON.stringify({
+            access_token: authObj.access_token,
+          }),
         })
           .then((res) => res.json())
           .then((res) => {
-            localStorage.setItem("Kakao_token", res.access_token);
+            localStorage.setItem('Kakao_token', res.access_token);
             if (res.access_token) {
-              alert("샤방에 오신 것을 환영합니다 !");
-              history.push("/");
+              alert('샤방에 오신 것을 환영합니다 !');
+              history.push('/');
             }
           });
       },
@@ -36,17 +36,17 @@ export default function LogIn() {
 
   const googleLogin = (res) => {
     fetch(`${GOOGLE_LOGIN_API_URL}`, {
-      method: "POST",
-      headers: {
-        Authorization: res.tokenObj.id_token,
-      },
+      method: 'POST',
+      body: JSON.stringify({
+        access_token: res.tokenObj.id_token,
+      }),
     })
       .then((res) => res.json())
       .then((res) => {
-        localStorage.setItem("Google_token", res.access_token);
+        localStorage.setItem('Google_token', res.access_token);
         if (res.access_token) {
-          alert("샤방에 오신 것을 환영합니다 !");
-          history.push("/");
+          alert('샤방에 오신 것을 환영합니다 !');
+          history.push('/');
         }
       });
   };
@@ -55,31 +55,31 @@ export default function LogIn() {
     <LoginContainer>
       <LoginBox>
         <LoginHeader>
-          <Link to="/">
+          <Link to='/'>
             <img
-              src="images/loginLogo.png"
-              alt="클릭하면 홈화면으로 이동할 수 있어요"
+              src='images/loginLogo.png'
+              alt='클릭하면 홈화면으로 이동할 수 있어요'
             />
           </Link>
-          <h className="title sub">간편하게 로그인하고</h>
-          <h className="title main">다양한 서비스를 이용하세요.</h>
+          <h className='title sub'>간편하게 로그인하고</h>
+          <h className='title main'>다양한 서비스를 이용하세요.</h>
         </LoginHeader>
         <LoginBody>
-          <button className="kakaoBtn" onClick={kakaoLogin}>
-            <img src="images/kakaoLogo.png" alt="카카오톡으로 로그인하기" />
+          <button className='kakaoBtn' onClick={kakaoLogin}>
+            <img src='images/kakaoLogo.png' alt='카카오톡으로 로그인하기' />
             <span>카카오톡으로 시작</span>
           </button>
           <GoogleLogin
             clientId={googleLoginClientId}
             render={(renderProps) => (
-              <button onClick={renderProps.onClick} className="googleBtn">
-                <img src="images/googleLogo.png" alt="구글로 로그인하기" />
+              <button onClick={renderProps.onClick} className='googleBtn'>
+                <img src='images/googleLogo.png' alt='구글로 로그인하기' />
                 <span>구글로 시작</span>
               </button>
             )}
             onSuccess={googleLogin}
             onFailure={googleLogin}
-            cookiePolicy={"single_host_origin"}
+            cookiePolicy={'single_host_origin'}
           />
         </LoginBody>
         <LoginFooter>

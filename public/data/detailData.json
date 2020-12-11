@@ -1,0 +1,42 @@
+{
+  "complex": {
+    "complex_id": 8,
+    "complex_name": "강남신동아파밀리에2단지",
+    "completion_year": "2011",
+    "image_url": "https://images.unsplash.com/photo-1525953776754-6c4b7ee655ab?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fGFwYXJ0bWVudHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60",
+    "household_number": 300,
+    "address": "서울특별시 강남구 세곡동",
+    "size": [
+      {
+        "m^2": 140,
+        "p": 42,
+        "selling": null,
+        "renting": "2130000000.00000000"
+      },
+      {
+        "m^2": 141,
+        "p": 47,
+        "selling": "1110000000.00000000",
+        "renting": 0
+      }
+    ],
+    "trade_data": [
+      {
+        "trade_date": "2011.4",
+        "floor": 8,
+        "pricePerP": 25978723,
+        "trade_type": "매매",
+        "m^2": 141,
+        "p": 42
+      },
+      {
+        "trade_date": "2011.3",
+        "floor": 9,
+        "pricePerP": 25928571,
+        "trade_type": "전세",
+        "m^2": 140,
+        "p": 42
+      }
+    ]
+  }
+}
