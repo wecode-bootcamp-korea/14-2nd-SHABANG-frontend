@@ -3,7 +3,9 @@ import styled from "styled-components";
 import NearbyMap from "./NearbyMap";
 import NearbyModal from "../Modal/NearbyModal";
 
-const NearbyCard = () => {
+const NearbyCard = (props) => {
+  const { targetRoomData } = props;
+  console.log(targetRoomData);
   const [isModalActive, setModalActive] = useState(false);
   const [isBodyShow, setBodyShow] = useState(true);
 
@@ -22,10 +24,10 @@ const NearbyCard = () => {
       {isBodyShow && (
         <CardBody>
           <DetailAddressBox>
-            <p className="detailAddress">강남구 삼성동</p>
+            <p className="detailAddress">{targetRoomData[0].region}</p>
           </DetailAddressBox>
           <MapImgBox onClick={() => setModalActive(!isModalActive)}>
-            <NearbyMap />
+            <NearbyMap targetRoomData={targetRoomData} />
           </MapImgBox>
         </CardBody>
       )}
@@ -33,6 +35,7 @@ const NearbyCard = () => {
         <NearbyModal
           isModalActive={isModalActive}
           setModalActive={setModalActive}
+          targetRoomData={targetRoomData}
         />
       )}
     </NearbyCardContainer>
@@ -41,9 +44,11 @@ const NearbyCard = () => {
 
 const NearbyCardContainer = styled.div`
   font-family: spoqaHanSans, Arial, Helvetica, sans-serif;
-  width: 385px;
+  width: 400px;
   border: 1px solid #eeeeee;
   margin: auto auto;
+  background-color: white;
+  height: 60%;
 `;
 
 const CardHeader = styled.div`

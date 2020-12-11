@@ -9,6 +9,7 @@ import {
   withRouter,
 } from "react-router-dom";
 import { oneRoomDataAPI } from "../../../../Config";
+import NearbyCard from "../../../../Components/NearBy/Card/NearbyCard";
 
 const SideBarDetail = () => {
   const [oneRoomData, setOneRoomData] = useState([]);
@@ -110,12 +111,14 @@ const SideBarDetail = () => {
           <ProductInfo>
             <div className="title">
               <div>매물 정보</div>
-              <button
-                style={{ border: "none", cursor: "pointer" }}
-                onClick={changeCollapse}
-              >
-                클릭
-              </button>
+              <span>
+                <Arrow
+                  onClick={changeCollapse}
+                  collapse={collapse}
+                  src="/images/icon/arrow2.png"
+                  alt="클릭해주세요."
+                />
+              </span>
             </div>
             {collapse && (
               <div className="info">
@@ -130,6 +133,7 @@ const SideBarDetail = () => {
               </div>
             )}
           </ProductInfo>
+          <NearbyCard targetRoomData={targetRoomData} />
         </OrList>
       )}
     </Bar>
@@ -250,7 +254,6 @@ const Description = styled.div`
 `;
 
 const ProductInfo = styled.div`
-  height: 480px;
   width: 388px;
   border: 0px solid green;
 
@@ -261,7 +264,7 @@ const ProductInfo = styled.div`
     border: 0px solid red;
     display: flex;
     justify-content: space-between;
-    padding: 16px 9px 16px 13px;
+    padding: 16px 9px 16px 22px;
   }
 
   .infoDetail {
@@ -275,6 +278,13 @@ const ProductInfo = styled.div`
       line-height: 17px;
     }
   }
+`;
+const Arrow = styled.img`
+  width: 15px;
+  transition: all ease 0.4s;
+  cursor: pointer;
+  transform: ${({ collapse }) =>
+    collapse ? "rotate(-270deg)" : "rotate(-90deg)"};
 `;
 
 export default SideBarDetail;

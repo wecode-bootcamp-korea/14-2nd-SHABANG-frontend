@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Map from "./Components/Map/Map";
 import SideBar from "./Components/SideBar/SideBar";
 import SideBarDetail from "./Components/SideBarDetail/SideBarDetail";
+import Filter from "./Components/Filter/Filter";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "../../Components/NavBar/NavBar";
@@ -13,6 +14,7 @@ const OneRoom = () => {
       <NavBar />
       <NavUnderOne />
       <Main>
+        <Filter />
         <Map />
         <Switch>
           <Route exact path="/oneroom" component={SideBar} />
