@@ -13,7 +13,6 @@ const SideBar = () => {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        console.log(data);
       });
   }, []);
 
@@ -122,12 +121,14 @@ const Bar = styled.div`
   height: 100vh;
   width: 400px;
   border: 0px solid red;
+  margin-top: 130px;
 `;
 
 const Header = styled.div`
   height: 50px;
   width: 388px;
   border: 1px solid #e1e1e1;
+  border-top: 0px solid #e1e1e1;
   display: flex;
   padding: 13px;
   justify-content: space-between;

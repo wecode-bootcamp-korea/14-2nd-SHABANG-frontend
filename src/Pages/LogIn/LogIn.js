@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { KAKAO_LOGIN_API_URL, GOOGLE_LOGIN_API_URL } from "../../Config";
-// import GoogleLogin from "react-google-login";
+import GoogleLogin from "react-google-login";
 import LoginFooterBtn from "./Component/LoginFooterBtn";
 
 const googleLoginClientId = process.env.REACT_APP_GOOGLELOGIN_CLIENT_ID;
@@ -15,9 +15,9 @@ export default function LogIn() {
       success: function (authObj) {
         fetch(`${KAKAO_LOGIN_API_URL}`, {
           method: "POST",
-          body: JSON.stringify({
-            access_token: authObj.access_token,
-          }),
+          headers: {
+            Authorization: authObj.access_token,
+          },
         })
           .then((res) => res.json())
           .then((res) => {
@@ -37,9 +37,9 @@ export default function LogIn() {
   const googleLogin = (res) => {
     fetch(`${GOOGLE_LOGIN_API_URL}`, {
       method: "POST",
-      body: JSON.stringify({
-        access_token: res.tokenObj.id_token,
-      }),
+      headers: {
+        Authorization: res.tokenObj.id_token,
+      },
     })
       .then((res) => res.json())
       .then((res) => {
@@ -69,7 +69,7 @@ export default function LogIn() {
             <img src="images/kakaoLogo.png" alt="카카오톡으로 로그인하기" />
             <span>카카오톡으로 시작</span>
           </button>
-          {/* <GoogleLogin
+          <GoogleLogin
             clientId={googleLoginClientId}
             render={(renderProps) => (
               <button onClick={renderProps.onClick} className="googleBtn">
@@ -80,7 +80,7 @@ export default function LogIn() {
             onSuccess={googleLogin}
             onFailure={googleLogin}
             cookiePolicy={"single_host_origin"}
-          /> */}
+          />
         </LoginBody>
         <LoginFooter>
           <p>다른 방법으로 시작하기</p>

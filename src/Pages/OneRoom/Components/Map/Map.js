@@ -121,6 +121,7 @@ const Map = () => {
         style={{
           width: "100%",
           height: "100vh",
+          marginTop: "130px",
         }}
       ></div>
       {/* <SideBar oneroom={oneroom} /> */}
